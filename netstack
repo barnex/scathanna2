@@ -1,0 +1,11 @@
+#! /bin/bash
+
+set -e
+
+cargo build --release;
+
+(sleep 0.5s; cargo run --release --bin play -- --name alice --team red)&
+(sleep 0.5s; cargo run --release --bin play -- --name bob   --team blue)&
+
+RUST_LOG=trace cargo run --release --bin server -- $@
+killall server

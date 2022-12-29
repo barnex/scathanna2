@@ -1,0 +1,70 @@
+[package]
+name = "hacksilver"
+version = "1.0.0"
+edition = "2021"
+
+[dependencies]
+anyhow = "1"
+bincode = "1"
+bytemuck = { version = "1.4", features = ["derive"] }
+cgmath = "0.18"
+clap = { version = "4", features = ["derive", "error-context", "std", "usage"] }
+cpal = "0.14"
+env_logger = "0.9"
+flate2 = "1"
+fnv = "1"
+gcd = "2"
+image = { version = "0.24", default-features = false, features = [
+	"png",
+	"jpeg",
+] }
+lewton = "0.10.2"
+log = "0.4"
+matrix = { path = "../libs/matrix" }
+once_cell = "1"
+pollster = "0.2"
+rand = "0.8"
+rand_xoshiro = "0.6"
+rand_distr = "0.4"
+rayon = "1"
+ron = "0.8"
+serde = { version = "1", features = ["derive"] }
+serde_json = "1"
+smallvec = { version = "1.9", features = ["serde", "const_generics"] }
+toml = "0.5"
+vector = { path = "../libs/vector" }
+wavefrontobj = { path = "../libs/wavefrontobj" }
+wgpu = { version = "0.14", features = [] }
+winit = { version = "0.27.5" }
+#winit = { version = "0.27.5", default-features = false, features = ["x11", "wayland"]}
+
+
+[build-dependencies]
+anyhow = "1.0"
+fs_extra = "1.2"
+glob = "0.3"
+
+[[bin]]
+name = "play"
+path = "bin/play.rs"
+
+[[bin]]
+name = "server"
+path = "bin/server.rs"
+
+[[bin]]
+name = "editor"
+path = "bin/editor.rs"
+
+#TODO: lto=true for actual release
+[profile.release]
+panic = "abort"
+debug = false
+incremental = true
+lto = "off"
+
+[profile.dev]
+lto = "off"
+incremental = true
+panic = "abort"
+debug = false

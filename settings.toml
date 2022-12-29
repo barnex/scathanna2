@@ -1,0 +1,33 @@
+[network]
+servers = ["127.0.0.1:3344"]
+
+[player]
+name = "Your Name Here"
+team = "red"
+avatar = 4
+
+[controls]
+forward = 'e'
+left = 's'
+backward = 'd'
+right = 'f'
+jump = ' '
+mouse_sensitivity = 100
+
+[graphics]
+width = 1280
+height = 768
+fullscreen = false
+no_msaa = false #
+anisotropy = 8
+texture_resolution = 512
+no_normal_maps = false
+no_textures = false
+lightmap_nearest = false
+no_mipmaps = false
+no_trilinear = false
+wireframe = true
+
+[sound]
+enabled = true
+volume = 100

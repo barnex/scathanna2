@@ -1,0 +1,163 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<!-- Created with Inkscape (http://www.inkscape.org/) -->
+
+<svg
+   width="210mm"
+   height="297mm"
+   viewBox="0 0 210 297"
+   version="1.1"
+   id="svg5"
+   inkscape:version="1.1.2 (0a00cf5339, 2022-02-04)"
+   sodipodi:docname="sparkle.svg"
+   xmlns:inkscape="http://www.inkscape.org/namespaces/inkscape"
+   xmlns:sodipodi="http://sodipodi.sourceforge.net/DTD/sodipodi-0.dtd"
+   xmlns="http://www.w3.org/2000/svg"
+   xmlns:svg="http://www.w3.org/2000/svg">
+  <sodipodi:namedview
+     id="namedview7"
+     pagecolor="#ffffff"
+     bordercolor="#666666"
+     borderopacity="1.0"
+     inkscape:pageshadow="2"
+     inkscape:pageopacity="0.0"
+     inkscape:pagecheckerboard="0"
+     inkscape:document-units="mm"
+     showgrid="false"
+     inkscape:zoom="3.1108586"
+     inkscape:cx="86.953487"
+     inkscape:cy="366.61905"
+     inkscape:window-width="2509"
+     inkscape:window-height="1376"
+     inkscape:window-x="0"
+     inkscape:window-y="0"
+     inkscape:window-maximized="1"
+     inkscape:current-layer="layer1" />
+  <defs
+     id="defs2">
+    <filter
+       inkscape:collect="always"
+       style="color-interpolation-filters:sRGB"
+       id="filter5019"
+       x="-0.6009196"
+       y="-0.60044011"
+       width="2.2018392"
+       height="2.2008802">
+      <feGaussianBlur
+         inkscape:collect="always"
+         stdDeviation="3.2293424"
+         id="feGaussianBlur5021" />
+    </filter>
+    <filter
+       inkscape:collect="always"
+       style="color-interpolation-filters:sRGB"
+       id="filter5185"
+       x="-0.19458798"
+       y="-0.20397137"
+       width="1.389176"
+       height="1.4079427">
+      <feGaussianBlur
+         inkscape:collect="always"
+         stdDeviation="0.56211846"
+         id="feGaussianBlur5187" />
+    </filter>
+    <filter
+       inkscape:collect="always"
+       style="color-interpolation-filters:sRGB"
+       id="filter5185-6"
+       x="-0.46525899"
+       y="-0.48769464"
+       width="1.930518"
+       height="1.9753893">
+      <feGaussianBlur
+         inkscape:collect="always"
+         stdDeviation="1.3440228"
+         id="feGaussianBlur5187-7" />
+    </filter>
+    <filter
+       inkscape:collect="always"
+       style="color-interpolation-filters:sRGB"
+       id="filter5019-3"
+       x="-1.20055"
+       y="-1.199592"
+       width="3.4010999"
+       height="3.399184">
+      <feGaussianBlur
+         inkscape:collect="always"
+         stdDeviation="6.4517564"
+         id="feGaussianBlur5021-6" />
+    </filter>
+    <filter
+       inkscape:collect="always"
+       style="color-interpolation-filters:sRGB"
+       id="filter3556"
+       x="-0.0019842428"
+       y="-0.0020799267"
+       width="1.0039685"
+       height="1.0041599">
+      <feGaussianBlur
+         inkscape:collect="always"
+         stdDeviation="0.0057320063"
+         id="feGaussianBlur3558" />
+    </filter>
+  </defs>
+  <g
+     inkscape:label="Layer 1"
+     inkscape:groupmode="layer"
+     id="layer1">
+    <ellipse
+       style="opacity:0.443126;fill:#ffac4b;fill-opacity:1;stroke-width:0.504136;filter:url(#filter5019)"
+       id="path846-3"
+       cx="62.507072"
+       cy="92.469635"
+       rx="6.448801"
+       ry="6.4539509"
+       transform="matrix(0.77133323,0,0,0.76962695,3.0092893,10.03032)"
+       inkscape:export-filename="/home/arne/src/hacksilver-assets/textures/sparkle.png"
+       inkscape:export-xdpi="96"
+       inkscape:export-ydpi="96" />
+    <ellipse
+       style="opacity:0.443126;mix-blend-mode:normal;fill:#ffac4b;fill-opacity:1;stroke-width:0.504136;filter:url(#filter5019-3)"
+       id="path846-3-7"
+       cx="62.507072"
+       cy="92.469635"
+       rx="6.448801"
+       ry="6.4539509"
+       transform="matrix(0.77133323,0,0,0.76962695,3.0090111,9.8871761)"
+       inkscape:export-filename="/home/arne/src/hacksilver-assets/textures/sparkle.png"
+       inkscape:export-xdpi="96"
+       inkscape:export-ydpi="96" />
+    <ellipse
+       style="fill:#ffbe51;fill-opacity:1;stroke-width:0.264583;filter:url(#filter5185-6)"
+       id="path846-5"
+       cx="63.065723"
+       cy="92.48658"
+       rx="3.4665151"
+       ry="3.3070433"
+       transform="matrix(0.50635096,0,0,0.51674481,19.348813,33.329171)"
+       inkscape:export-filename="/home/arne/src/hacksilver-assets/textures/sparkle.png"
+       inkscape:export-xdpi="96"
+       inkscape:export-ydpi="96" />
+    <ellipse
+       style="mix-blend-mode:normal;fill:#fae7c7;fill-opacity:1;stroke-width:0.264583;filter:url(#filter5185)"
+       id="path846"
+       cx="62.966713"
+       cy="92.43309"
+       rx="3.4665151"
+       ry="3.3070433"
+       transform="matrix(0.287985,0,0,0.28072186,33.031299,54.991181)"
+       inkscape:export-filename="/home/arne/src/hacksilver-assets/textures/sparkle.png"
+       inkscape:export-xdpi="96"
+       inkscape:export-ydpi="96" />
+    <ellipse
+       style="mix-blend-mode:normal;fill:#fff1df;fill-opacity:1;stroke-width:0.264583;filter:url(#filter3556)"
+       id="path846-56"
+       cx="62.966713"
+       cy="92.43309"
+       rx="3.4665151"
+       ry="3.3070433"
+       transform="matrix(0.16975816,0,0,0.16547676,40.580021,65.645573)"
+       inkscape:export-filename="/home/arne/src/hacksilver-assets/textures/sparkle.png"
+       inkscape:export-xdpi="96"
+       inkscape:export-ydpi="96" />
+  </g>
+</svg>

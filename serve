@@ -1,0 +1,2 @@
+#! /bin/bash
+RUST_LOG=trace RUST_BACKTRACE=1 cargo run --release --bin server -- $@
