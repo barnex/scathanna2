@@ -50,7 +50,8 @@ impl Canvas {
 			.request_device(
 				&wgpu::DeviceDescriptor {
 					label: None,
-					features: wgpu::Features::POLYGON_MODE_LINE,
+					//features: wgpu::Features::POLYGON_MODE_LINE, // TODO: does not work on older graphics drivers but needed for editor
+					features: wgpu::Features::default(),
 					limits: wgpu::Limits::default(),
 				},
 				None, // Trace path

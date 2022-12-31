@@ -154,29 +154,30 @@ impl Shell {
 
 	// Attempt to grab the mouse cursor if not yet grabbed.
 	fn grab_cursor(&mut self) {
-		if !self.cursor_grabbed {
-			self.window.set_cursor_visible(false);
-			match self.window.set_cursor_grab(CursorGrabMode::Confined) {
-				Ok(()) => {
-					println!("Mouse cursor grabbed. Press ESC to release.");
-					self.cursor_grabbed = true;
-				}
-				Err(e) => {
-					log::error!("grab cursor: {}", e);
-				}
+		//if !self.cursor_grabbed {
+		self.window.set_cursor_visible(false);
+		match self.window.set_cursor_grab(CursorGrabMode::Confined) {
+			Ok(()) => {
+				//println!("Mouse cursor grabbed. Press ESC to release.");
+			}
+			Err(e) => {
+				// May fail a few times on MacOSX if window is not full initialized
+				log::error!("grab cursor: {}", e);
 			}
 		}
+		self.cursor_grabbed = true;
+		//}
 	}
 
 	// Release the mouse cursor if grabbed.
 	fn release_cursor(&mut self) {
-		if self.cursor_grabbed {
-			self.window.set_cursor_visible(true);
-			match self.window.set_cursor_grab(CursorGrabMode::None) {
-				Ok(()) => (),
-				Err(e) => log::error!("release cursor: {}", e),
-			}
+		//if self.cursor_grabbed {
+		self.window.set_cursor_visible(true);
+		match self.window.set_cursor_grab(CursorGrabMode::None) {
+			Ok(()) => (),
+			Err(e) => log::error!("release cursor: {}", e),
 		}
+		//}
 		self.cursor_grabbed = false;
 		// Needed after focus loss on Wayland:
 		// ESC DOWN gets recorded but ESC UP not (X11 sends both).
