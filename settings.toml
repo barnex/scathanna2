@@ -1,16 +1,16 @@
 [network]
-servers = ["127.0.0.1:3344"]
+servers = ["35.210.235.17:80"]
 
 [player]
-name = "Your Name Here"
-team = "red"
-avatar = 4
+name = "Arne"
+team = "blue"
+avatar = 1
 
 [controls]
-forward = 'w'
-left = 'a'
-backward = 's'
-right = 'd'
+forward = 'e'
+left = 's'
+backward = 'd'
+right = 'f'
 jump = ' '
 mouse_sensitivity = 100
 
