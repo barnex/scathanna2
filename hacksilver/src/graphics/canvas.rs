@@ -70,7 +70,10 @@ impl Canvas {
 				.ok_or(anyhow!("No graphics adapter found"))?,
 			width: size.width,
 			height: size.height,
-			present_mode: wgpu::PresentMode::Fifo,
+			present_mode: match opts.vsync {
+				true => wgpu::PresentMode::Fifo,
+				false => wgpu::PresentMode::Immediate,
+			},
 			alpha_mode: wgpu::CompositeAlphaMode::Auto,
 		};
 		surface.configure(&device, &config);

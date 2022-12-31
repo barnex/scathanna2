@@ -26,7 +26,7 @@ no_textures = false
 lightmap_nearest = false
 no_mipmaps = false
 no_trilinear = false
-wireframe = true
+vsync = true
 
 [sound]
 enabled = true

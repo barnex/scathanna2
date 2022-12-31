@@ -25,6 +25,8 @@ pub struct GraphicsOpts {
 	pub no_trilinear: bool,
 
 	pub lightmap_nearest: bool,
+
+	pub vsync: bool,
 }
 
 impl GraphicsOpts {
@@ -86,6 +88,7 @@ impl Default for GraphicsOpts {
 			no_mipmaps: false,
 			no_trilinear: false,
 			lightmap_nearest: false,
+			vsync: true,
 		}
 	}
 }
