@@ -155,24 +155,27 @@ impl Shell {
 	// Attempt to grab the mouse cursor if not yet grabbed.
 	fn grab_cursor(&mut self) {
 		if !self.cursor_grabbed {
+			self.window.set_cursor_visible(false);
+			// MacOSX hack
+			let _ = self.window.set_cursor_grab(CursorGrabMode::Locked);
 			match self.window.set_cursor_grab(CursorGrabMode::Confined) {
 				Ok(()) => {
 					println!("Mouse cursor grabbed. Press ESC to release.");
-					self.window.set_cursor_visible(false);
+					self.cursor_grabbed = true;
 				}
 				Err(e) => {
 					log::error!("grab cursor: {}", e);
 				}
 			}
-			self.cursor_grabbed = true;
 		}
 	}
 
 	// Release the mouse cursor if grabbed.
 	fn release_cursor(&mut self) {
 		if self.cursor_grabbed {
+			self.window.set_cursor_visible(true);
 			match self.window.set_cursor_grab(CursorGrabMode::None) {
-				Ok(()) => self.window.set_cursor_visible(true),
+				Ok(()) => (),
 				Err(e) => log::error!("release cursor: {}", e),
 			}
 		}
