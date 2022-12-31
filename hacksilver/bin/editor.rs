@@ -2,7 +2,6 @@ use anyhow::Result;
 use clap::Parser;
 use hacksilver::editor::Editor;
 use hacksilver::internal::*;
-use hacksilver::resources::*;
 
 /// Map editor.
 #[derive(Parser)]
@@ -33,7 +32,7 @@ fn main_result(args: EditFlags) -> Result<()> {
 	if args.create {
 		Editor::create(&args.map)?;
 	}
-	Shell::main_loop(settings.graphics, move |ctx| Editor::load(ctx, &args.map))
+	Shell::main_loop(settings.graphics, settings.controls, move |ctx| Editor::load(ctx, &args.map))
 }
 
 fn load_settings(file: &str) -> Result<Settings> {

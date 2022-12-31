@@ -49,7 +49,7 @@ impl Shell {
 	/// It is fine for your constructor function to take a lot of time
 	/// (e.g. loading assets etc). Until it returns, the Shell will
 	/// display "Loading..." and remain responsive.
-	pub fn main_loop<F, A>(opts: GraphicsOpts, new_app: F) -> Result<()>
+	pub fn main_loop<F, A>(graphics: GraphicsOpts, controls: Controls, new_app: F) -> Result<()>
 	where
 		A: App,
 		F: FnOnce(&Arc<GraphicsCtx>) -> Result<A> + Send + 'static,
@@ -57,17 +57,17 @@ impl Shell {
 		let event_loop = EventLoop::new();
 		let window = WindowBuilder::new() //
 			.with_inner_size(LogicalSize::<u32> {
-				width: opts.width,
-				height: opts.height,
+				width: graphics.width,
+				height: graphics.height,
 			})
-			.with_fullscreen(match opts.fullscreen {
+			.with_fullscreen(match graphics.fullscreen {
 				true => Some(winit::window::Fullscreen::Borderless(None)),
 				false => None,
 			})
 			.with_title("hacksilver engine")
 			.build(&event_loop)?;
 
-		let canvas = Canvas::new(opts, &window)?;
+		let canvas = Canvas::new(graphics, &window)?;
 		let ctx = canvas.graphics_context();
 
 		let loading_screen = LoadingScreen::new(ctx, |ctx| Ok(TextConsole::new(ctx, new_app(ctx)?)));
@@ -77,7 +77,7 @@ impl Shell {
 			cursor_grabbed: false,
 			app,
 			previous_tick: Instant::now(),
-			input_state: default(),
+			input_state: Inputs::new(controls),
 			canvas,
 			window,
 		};
@@ -156,8 +156,6 @@ impl Shell {
 	fn grab_cursor(&mut self) {
 		if !self.cursor_grabbed {
 			self.window.set_cursor_visible(false);
-			// MacOSX hack
-			let _ = self.window.set_cursor_grab(CursorGrabMode::Locked);
 			match self.window.set_cursor_grab(CursorGrabMode::Confined) {
 				Ok(()) => {
 					println!("Mouse cursor grabbed. Press ESC to release.");

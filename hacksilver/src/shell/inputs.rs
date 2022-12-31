@@ -9,7 +9,7 @@ use winit::{
 ///
 /// Also de-bounces events faster than a tick,
 /// and removes OS key repeats.
-#[derive(Default, Debug)]
+#[derive(Debug)]
 pub struct Inputs {
 	pub buttons_down: Set<Button>,
 	pub buttons_pressed: Set<Button>,
@@ -17,6 +17,34 @@ pub struct Inputs {
 	pub received_characters: String,
 	pub mouse_delta: ivec2,
 	pub tick_time: Duration,
+
+	pub FORWARD: Button,
+	pub LEFT: Button,
+	pub BACKWARD: Button,
+	pub RIGHT: Button,
+	pub JUMP: Button,
+	pub CROUCH: Button,
+}
+
+impl Inputs {
+	pub fn new(c: Controls) -> Self {
+		use VirtualKeyCode::*;
+		Self {
+			buttons_down: default(),
+			buttons_pressed: default(),
+			buttons_released: default(),
+			received_characters: default(),
+			mouse_delta: default(),
+			tick_time: default(),
+
+			FORWARD: button(c.forward).unwrap_or(Button::Key(Up)),
+			LEFT: button(c.left).unwrap_or(Button::Key(Left)),
+			BACKWARD: button(c.backward).unwrap_or(Button::Key(Down)),
+			RIGHT: button(c.right).unwrap_or(Button::Key(Right)),
+			JUMP: button(c.jump).unwrap_or(Button::Key(Space)),
+			CROUCH: button('z').unwrap_or(Button::Key(Z)), // TODO
+		}
+	}
 }
 
 /// A keystroke or mouse click or scroll action
@@ -44,12 +72,6 @@ impl Button {
 	pub const COPY: Self = Self::Key(VirtualKeyCode::C);
 	pub const PASTE: Self = Self::Key(VirtualKeyCode::V);
 	pub const DELETE: Self = Self::Key(VirtualKeyCode::X);
-	pub const FORWARD: Self = Self::Key(VirtualKeyCode::E);
-	pub const LEFT: Self = Self::Key(VirtualKeyCode::S);
-	pub const BACKWARD: Self = Self::Key(VirtualKeyCode::D);
-	pub const RIGHT: Self = Self::Key(VirtualKeyCode::F);
-	pub const JUMP: Self = Self::Key(VirtualKeyCode::Space);
-	pub const CROUCH: Self = Self::Key(VirtualKeyCode::Z);
 	pub const SHIFT: Self = Self::Key(VirtualKeyCode::LShift);
 	pub const CONTROL: Self = Self::Key(VirtualKeyCode::LControl);
 	pub const ALT: Self = Self::Key(VirtualKeyCode::LAlt);
@@ -66,7 +88,11 @@ impl Inputs {
 	/// (E.g. needed after focus loss on Wayland:
 	/// ESC DOWN gets recorded but ESC UP not (X11 sends both))
 	pub fn clear(&mut self) {
-		*self = default()
+		self.buttons_down.clear();
+		self.buttons_pressed.clear();
+		self.buttons_released.clear();
+		self.received_characters.clear();
+		self.mouse_delta = default();
 	}
 
 	/// Is a button currently held down?
@@ -219,4 +245,44 @@ impl Inputs {
 			self.buttons_released.insert(button);
 		}
 	}
+}
+
+fn button(c: char) -> Result<Button> {
+	let c = c as char;
+	let c = c.to_ascii_lowercase();
+	use VirtualKeyCode::*;
+	Ok(Button::Key(match c {
+		'a' => A,
+		'b' => B,
+		'c' => C,
+		'd' => D,
+		'e' => E,
+		'f' => F,
+		'g' => G,
+		'h' => H,
+		'i' => I,
+		'j' => J,
+		'k' => K,
+		'l' => L,
+		'm' => M,
+		'n' => N,
+		'o' => O,
+		'p' => P,
+		'q' => Q,
+		'r' => R,
+		's' => S,
+		't' => T,
+		'u' => U,
+		'v' => V,
+		'w' => W,
+		'x' => X,
+		'y' => Y,
+		'z' => Z,
+		' ' => Space,
+		_ => {
+			let err = Err(anyhow!("Sorry, key `{}` cannot be used", c));
+			LOG.write(format!("ERROR: {:?}", &err));
+			return err;
+		}
+	}))
 }

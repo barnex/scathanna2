@@ -61,10 +61,9 @@ path = "bin/editor.rs"
 panic = "abort"
 debug = false
 incremental = true
-lto = "off"
+lto = true
 
 [profile.dev]
 lto = "off"
 incremental = true
-panic = "abort"
 debug = false

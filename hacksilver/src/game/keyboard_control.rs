@@ -6,18 +6,18 @@ pub const Z: usize = 2;
 
 /// Direction an entity wants to move in,
 /// based on the currently pressed keys and look direction.
-pub fn walk_dir(yaw: f32, input: &Inputs) -> vec3 {
+pub fn walk_dir(yaw: f32, inputs: &Inputs) -> vec3 {
 	let mut dir = vec3::ZERO;
-	if input.is_down(Button::LEFT) {
+	if inputs.is_down(inputs.LEFT) {
 		dir[X] -= 1.0;
 	}
-	if input.is_down(Button::RIGHT) {
+	if inputs.is_down(inputs.RIGHT) {
 		dir[X] += 1.0;
 	}
-	if input.is_down(Button::FORWARD) {
+	if inputs.is_down(inputs.FORWARD) {
 		dir[Z] -= 1.0;
 	}
-	if input.is_down(Button::BACKWARD) {
+	if inputs.is_down(inputs.BACKWARD) {
 		dir[Z] += 1.0;
 	}
 	if dir == vec3::ZERO {
@@ -29,12 +29,12 @@ pub fn walk_dir(yaw: f32, input: &Inputs) -> vec3 {
 
 /// Direction an entity wants to fly in,
 /// based on the currently pressed keys and look direction.
-pub fn fly_dir(yaw: f32, input: &Inputs) -> vec3 {
-	let mut fly_dir = walk_dir(yaw, input);
-	if input.is_down(Button::JUMP) {
+pub fn fly_dir(yaw: f32, inputs: &Inputs) -> vec3 {
+	let mut fly_dir = walk_dir(yaw, inputs);
+	if inputs.is_down(inputs.JUMP) {
 		fly_dir[Y] += 1.0;
 	}
-	if input.is_down(Button::CROUCH) {
+	if inputs.is_down(inputs.CROUCH) {
 		fly_dir[Y] -= 1.0;
 	}
 	fly_dir.safe_normalized()

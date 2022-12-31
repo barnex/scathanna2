@@ -171,18 +171,25 @@ impl Editor {
 	}
 
 	fn translate_camera(&mut self, inputs: &Inputs) {
-		const BLOCKS_PER_SEC: f32 = 24.0;
+		const BLOCKS_PER_SEC: f32 = 32.0;
 		let speed = BLOCKS_PER_SEC * inputs.dt();
-		for but in inputs.buttons_down() {
-			match but {
-				Button::FORWARD => self.camera.position += speed * self.camera.orientation.look_dir_h(),
-				Button::BACKWARD => self.camera.position -= speed * self.camera.orientation.look_dir_h(),
-				Button::LEFT => self.camera.position -= speed * self.camera.orientation.look_right(),
-				Button::RIGHT => self.camera.position += speed * self.camera.orientation.look_right(),
-				Button::CROUCH => self.camera.position[1] -= speed,
-				Button::JUMP => self.camera.position[1] += speed,
-				_ => (),
-			}
+		if inputs.is_down(inputs.FORWARD) {
+			self.camera.position += speed * self.camera.orientation.look_dir_h()
+		}
+		if inputs.is_down(inputs.BACKWARD) {
+			self.camera.position -= speed * self.camera.orientation.look_dir_h()
+		}
+		if inputs.is_down(inputs.LEFT) {
+			self.camera.position -= speed * self.camera.orientation.look_right()
+		}
+		if inputs.is_down(inputs.RIGHT) {
+			self.camera.position += speed * self.camera.orientation.look_right()
+		}
+		if inputs.is_down(inputs.CROUCH) {
+			self.camera.position[1] -= speed
+		}
+		if inputs.is_down(inputs.JUMP) {
+			self.camera.position[1] += speed
 		}
 	}
 

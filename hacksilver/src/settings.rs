@@ -10,7 +10,7 @@ pub struct Settings {
 	pub network: NetworkOpts,
 }
 
-#[derive(Deserialize)]
+#[derive(Deserialize, Clone)]
 pub struct Controls {
 	pub forward: char,
 	pub left: char,
@@ -18,6 +18,19 @@ pub struct Controls {
 	pub right: char,
 	pub jump: char,
 	pub mouse_sensitivity: f32,
+}
+
+impl Default for Controls {
+	fn default() -> Self {
+		Self {
+			forward: 'w',
+			left: 'a',
+			backward: 's',
+			right: 'd',
+			jump: ' ',
+			mouse_sensitivity: 100.0,
+		}
+	}
 }
 
 #[derive(Deserialize)]

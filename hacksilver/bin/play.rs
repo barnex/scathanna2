@@ -2,7 +2,6 @@ use anyhow::Result;
 use clap::Parser;
 use hacksilver::game::*;
 use hacksilver::internal::*;
-use hacksilver::resources::*;
 
 /// Play the game by connecting to a server.
 #[derive(Parser)]
@@ -43,11 +42,11 @@ fn main_result(args: PlayFlags) -> Result<()> {
 	// but we don't have the GraphicsOptions to do so (e.g. for window size), so we must use defaults.
 	let settings = match load_settings(&args.settings) {
 		Ok(settings) => settings,
-		Err(e) => return Shell::main_loop(GraphicsOpts::default(), move |_| -> Result<NopApp> { Err(anyhow!("{}: {e:#}", args.settings)) }),
+		Err(e) => return Shell::main_loop(default(), default(), move |_| -> Result<NopApp> { Err(anyhow!("{}: {e:#}", args.settings)) }),
 	};
 
 	let settings = settings.with(|s| override_play_settings(s, args));
-	Shell::main_loop(settings.graphics.clone(), move |ctx| Client::new(ctx, settings))
+	Shell::main_loop(settings.graphics.clone(), settings.controls.clone(), move |ctx| Client::new(ctx, settings))
 }
 
 fn load_settings(file: &str) -> Result<Settings> {

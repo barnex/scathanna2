@@ -183,8 +183,8 @@ impl Player {
 		self.skeleton.try_walk(dt, world, walk_speed);
 	}
 
-	fn tick_jump(&mut self, upd: &mut ClientMsgs, input_state: &InputState, world: &World, _dt: f32) {
-		if input_state.is_down(Button::JUMP) {
+	fn tick_jump(&mut self, upd: &mut ClientMsgs, inputs: &InputState, world: &World, _dt: f32) {
+		if inputs.is_down(inputs.JUMP) {
 			if self.skeleton.try_jump(world, Self::JUMP_SPEED) {
 				upd.push(ClientMsg::PlaySound(SoundEffect::spatial("jump", self.position(), 0.3)))
 			}

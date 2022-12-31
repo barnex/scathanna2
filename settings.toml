@@ -7,10 +7,10 @@ team = "red"
 avatar = 4
 
 [controls]
-forward = 'e'
-left = 's'
-backward = 'd'
-right = 'f'
+forward = 'w'
+left = 'a'
+backward = 's'
+right = 'd'
 jump = ' '
 mouse_sensitivity = 100
 
@@ -18,7 +18,7 @@ mouse_sensitivity = 100
 width = 1280
 height = 768
 fullscreen = false
-no_msaa = false #
+no_msaa = false
 anisotropy = 8
 texture_resolution = 512
 no_normal_maps = false

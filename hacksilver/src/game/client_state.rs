@@ -240,7 +240,7 @@ impl ClientState {
 			if prev.feet_phase.signum() != curr.feet_phase.signum() {
 				// make one's own footsteps less loud
 				// (quite distracting otherwise)
-				let volume = if player_id == self.local_player_id { 0.02 } else { 0.3 };
+				let volume = if player_id == self.local_player_id { 0.01 } else { 0.3 };
 				self.play_sound_spatial(
 					ctx,
 					Self::random_footstep_clip(),
