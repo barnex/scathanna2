@@ -156,7 +156,7 @@ impl Shell {
 	fn grab_cursor(&mut self) {
 		//if !self.cursor_grabbed {
 		self.window.set_cursor_visible(false);
-		match self.window.set_cursor_grab(CursorGrabMode::Confined) {
+		match self.window.set_cursor_grab(CursorGrabMode::Locked) {
 			Ok(()) => {
 				//println!("Mouse cursor grabbed. Press ESC to release.");
 			}
