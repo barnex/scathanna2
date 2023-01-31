@@ -36,9 +36,11 @@ This allows for relatively complex structures to be built reasonably intuitively
 
 ## Installation
 
+Works on Linux, Mac and Windows.
+
 Make sure you have Rust installed from [rustup.rs](http://rustup.rs).
 
-Install dependencies:
+Linux only: install dependencies (example for Ubuntu):
 
 ```
 sudo apt install \
