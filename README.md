@@ -1,6 +1,6 @@
 # Scathanna 2
 
-A multiplayer first person shooter written from scratch in [Rust](https://www.rust-lang.org) (not using any existing engine/render) and [WGPU](https://wgpu.rs). Successor of my voxel game [Scathanna](github.com/barnex/scathanna-3d).
+A multiplayer first person shooter written from scratch in [Rust](https://www.rust-lang.org) (not using any existing engine/renderer) and [WGPU](https://wgpu.rs). Successor of my voxel game [Scathanna](github.com/barnex/scathanna-3d).
 
 ![fig](shots/062.jpg)
 
